@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        // required: true,
     },
     email: {
         type: String,
@@ -19,10 +19,7 @@ const UserSchema = new Schema({
         type: Date,
         default: null,
     },
-    // test: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Test"
-    // },
+    
     mobile: {
         type: String
     },

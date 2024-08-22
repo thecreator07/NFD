@@ -34,19 +34,18 @@ const generateAccesTokenAndRefreshToken = async (userId) => {
 
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { email, password, mobile } = req.body;
+    const { email, password } = req.body;
 
     // Check if any required fields are empty
-    if ([mobile, email, password].some((field) => !field || field.trim() === "")) {
+    if ([email, password].some((field) => !field || field.trim() === "")) {
         throw new ApiError(401, "All fields are required");
     }
 
     // Check if user already exists with the same fullName or email
-    const existingUser = await User.findOne({ $or: [{ mobile }, { email }] });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
         throw new ApiError(409, "Email or mobile already in use");
     }
-
 
     // Create the user in the database
     const user = await User.create({

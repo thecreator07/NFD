@@ -22,7 +22,11 @@ const DoctorAppointmentSchema = new Schema({
     reasonForVisit: {
         type: String,
         required: false,
-        default:""
+        default: ""
+    },
+    report: {
+        type: String,
+        default: ""
     },
     status: {
         type: String,

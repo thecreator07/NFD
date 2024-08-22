@@ -9,7 +9,7 @@ export const verifyJwt = asyncHandler(async (req, _, next) => {
         //find accessToken from header or cookies
         console.log("cookies", req.cookies)
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-// console.log(token)
+        // console.log(token)
         if (!token) {
             throw new ApiError(401, "Unauthorized request");
         }
@@ -48,6 +48,15 @@ export const verifyAdmin = (req, res, next) => {
 
     if (!user || user.role !== 'admin') {
         throw new ApiError(403, 'Unauthorized access - Admin role required');
+    }
+
+    next();
+};
+export const verifyDoctor = (req, res, next) => {
+    const user = req.user;
+
+    if (!user || user.role !== 'doctor') {
+        throw new ApiError(403, 'Unauthorized access - doctor role required');
     }
 
     next();

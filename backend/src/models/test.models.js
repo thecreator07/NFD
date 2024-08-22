@@ -12,6 +12,7 @@ const TestSchema = new Schema({
         },
         price: { type: Number }
     }],
+    report: { type: String },
     description: {
         type: String,
     },
