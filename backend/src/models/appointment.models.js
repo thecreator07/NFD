@@ -21,7 +21,8 @@ const DoctorAppointmentSchema = new Schema({
     },
     reasonForVisit: {
         type: String,
-        // required: false
+        required: false,
+        default:""
     },
     status: {
         type: String,
