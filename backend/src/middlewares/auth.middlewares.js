@@ -7,7 +7,7 @@ import { ApiError } from "../utils/ApiError.js";
 export const verifyJwt = asyncHandler(async (req, _, next) => {
     try {
         //find accessToken from header or cookies
-        console.log("cookies", req.cookies)
+        // console.log("cookies", req.cookies)
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
         // console.log(token)
         if (!token) {

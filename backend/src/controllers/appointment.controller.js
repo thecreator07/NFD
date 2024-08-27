@@ -91,8 +91,6 @@ const GetAppointmentByUser = asyncHandler(async (req, res) => {
 
 
 
-
-
 //Doctors Access
 const UpdateAppointmentByDoctor = asyncHandler(async (req, res) => {
     // const { status } = req.body

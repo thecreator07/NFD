@@ -35,7 +35,7 @@ const generateAccesTokenAndRefreshToken = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-
+    console.log(req.body)
     // Check if any required fields are empty
     if ([email, password].some((field) => !field || field.trim() === "")) {
         throw new ApiError(401, "All fields are required");
@@ -110,7 +110,7 @@ const registerUser = asyncHandler(async (req, res) => {
 //     }
 // })
 const loginUser = asyncHandler(async (req, res) => {
-    const { email, password, mobile } = req.body;
+    const { email, password } = req.body;
 
     // Validate email presence
     if (!email) {
@@ -118,7 +118,7 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     // Find user by email
-    const user = await User.findOne({ $or: [{ email }, { mobile }] });
+    const user = await User.findOne({ $or: [{ email }] });
     if (!user) {
         throw new ApiError(404, "User does not exist");
     }

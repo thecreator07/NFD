@@ -1,8 +1,10 @@
 import Mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2"
+
 const UserSchema = new Schema({
-    name: {
+    fullName: {
         type: String,
         // required: true,
     },
@@ -19,7 +21,7 @@ const UserSchema = new Schema({
         type: Date,
         default: null,
     },
-    
+   
     mobile: {
         type: String
     },
@@ -107,6 +109,16 @@ UserSchema.methods.generateRefreshToken = async function () {
         }
     );
 };
+
+
+
+UserSchema.index({
+    fullName: "text",
+    mobile: "text",
+    role: "text",
+    active: "text"
+})
+UserSchema.plugin(mongooseAggregatePaginate)
 
 export const User = Mongoose.model("User", UserSchema);
 

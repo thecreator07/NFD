@@ -26,8 +26,10 @@ app.use(cookieParser())
 import userRouter from "./routes/user.routes.js"
 import testRouter from "./routes/test.routes.js"
 import appointment from "./routes/appointment.routes.js"
+import adminRouter from "./routes/admin.routes.js"
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/tests", testRouter)
 app.use("/api/v1/appointment", appointment)
+app.use("/api/v1/admin", adminRouter)
 
 export { app }
